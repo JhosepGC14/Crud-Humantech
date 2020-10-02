@@ -1,3 +1,0 @@
-{
-  "/movies/:id/turnos/*": "/movies/:id/turnos/"
-}
