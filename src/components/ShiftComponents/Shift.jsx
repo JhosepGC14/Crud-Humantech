@@ -16,7 +16,7 @@ const Shift = () => {
     try {
       let response = await userApi.users.getShiftByMovie();
       console.log("respuesta del server", response);
-      setShift(response.filter((turno) => turno.id === id));
+      setShift(response.filter((turno) => turno.idMovie === id));
     } catch (error) {
       console.log(error);
     }

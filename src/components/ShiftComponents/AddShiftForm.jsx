@@ -23,27 +23,27 @@ const AddShifForm = () => {
   const [time, setTime] = useState(new Date());
   const [beforeData, setBeforeData] = useState(null);
   const [dataSend, setDataSend] = useState({
-    id: id,
-    idTurno: "",
+    id: null,
+    idMovie: id,
     hora: "",
     status: "",
   });
   const { status } = dataSend;
 
-  const getDataUser = async (id) => {
-    try {
-      let response = await userApi.users.getShiftByMovie();
-      console.log("respuesta del server", response);
-      setBeforeData(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getDataUser = async (id) => {
+  //   try {
+  //     let response = await userApi.users.getShiftByMovie();
+  //     console.log("respuesta del server", response);
+  //     setBeforeData(response);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  //GET
-  useEffect(() => {
-    getDataUser(id);
-  }, [id]);
+  // //GET
+  // useEffect(() => {
+  //   getDataUser(id);
+  // }, [id]);
 
   //handle Change
   const handleDateChange = (e) => {
@@ -62,16 +62,12 @@ const AddShifForm = () => {
 
   const handleRegisterShift = async (id) => {
     try {
-      dataSend.id = id;
+      dataSend.idMovie = id;
       dataSend.hora = Helper.getDatetimeFormat(dataSend.hora);
-      dataSend.idTurno = uuidv4();
-      let dataBeforeAndNew = {
-        ...beforeData,
-        dataSend,
-      };
-      console.log("Datos enviados en Post de turnos :", dataBeforeAndNew);
-      await userApi.users.postShift(dataBeforeAndNew);
-      router.push(`/turnos/${dataSend.id}`);
+      dataSend.id = uuidv4();
+      console.log("Datos enviados en Post de turnos :", dataSend);
+      await userApi.users.postShift(dataSend);
+      router.push(`/turnos/${dataSend.idMovie}`);
     } catch (error) {
       console.log(error);
     }

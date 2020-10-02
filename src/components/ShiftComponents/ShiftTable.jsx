@@ -58,13 +58,14 @@ const ShiftTable = ({ shiftData, getData }) => {
           <TableBody>
             {shiftData &&
               shiftData.map((item, index) => {
+                let timeFormat = item.hora.substr(11, 5);
                 return (
                   <StyledTableRow key={index}>
                     <StyledTableCell component="th" scope="row">
-                      {item.idTurno}
+                      {item.id}
                     </StyledTableCell>
                     <StyledTableCell align="center">
-                      {item.hora}
+                      {timeFormat}
                     </StyledTableCell>
                     <StyledTableCell align="center">
                       {item.status === "1" ? "Activo" : "Inactivo"}

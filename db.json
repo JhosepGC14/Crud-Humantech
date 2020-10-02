@@ -39,28 +39,21 @@
   ],
   "turnos": [
     {
-      "id": "4194bea6-1525-4970-996e-b2f1e3a15f01",
-      "idTurno": 1,
-      "hora": "17:00:00",
-      "status": "0"
+      "hora": "2020-10-02 13:41:34",
+      "status": "1",
+      "idMovie": "4194bea6-1525-4970-996e-b2f1e3a15f01",
+      "id": "f13c28f4-e244-4390-b0fd-2c3b5d445515"
     },
     {
-      "id": "4194bea6-1525-4970-996e-b2f1e3a15f01",
-      "idTurno": 2,
-      "hora": "16:00:00",
-      "status": "0"
+      "hora": "2020-10-02 13:43:07",
+      "status": "1",
+      "idMovie": "4194bea6-1525-4970-996e-b2f1e3a15f01",
+      "id": "7a0005e8-c36d-419c-bce2-08a8faa5e96f"
     },
     {
-      "id": "4194bea6-1525-4970-996e-b2f1e3a15f01",
-      "idTurno": 3,
-      "hora": "15:00:00",
-      "status": "0"
-    },
-    {
-      "id": "5ee6dc0a-4110-4bb5-9d36-908fedc023fa",
-      "idTurno": 4,
-      "hora": "11:00:00",
-      "status": "0"
+      "hora": "2020-10-02 20:25:29",
+      "idMovie": "4194bea6-1525-4970-996e-b2f1e3a15f01",
+      "id": "bb5fdfae-142c-435f-938b-a5dfa0d2fcc0"
     }
   ]
 }

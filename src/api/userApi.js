@@ -63,7 +63,7 @@ const userApi = {
     //post turnos
     async postShift(user) {
       let response = await callApi("/turnos", {
-        method: "PUT",
+        method: "POST",
         body: JSON.stringify(user),
       });
       return response;
