@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Layout from "../ui/Layout";
 import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
@@ -21,7 +21,6 @@ const AddShifForm = () => {
   //state initial
   let router = useHistory();
   const [time, setTime] = useState(new Date());
-  const [beforeData, setBeforeData] = useState(null);
   const [dataSend, setDataSend] = useState({
     id: null,
     idMovie: id,
@@ -29,21 +28,6 @@ const AddShifForm = () => {
     status: "",
   });
   const { status } = dataSend;
-
-  // const getDataUser = async (id) => {
-  //   try {
-  //     let response = await userApi.users.getShiftByMovie();
-  //     console.log("respuesta del server", response);
-  //     setBeforeData(response);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // //GET
-  // useEffect(() => {
-  //   getDataUser(id);
-  // }, [id]);
 
   //handle Change
   const handleDateChange = (e) => {
