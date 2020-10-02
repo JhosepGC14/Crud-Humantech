@@ -1,0 +1,35 @@
+{
+  "movies": [
+    {
+      "id": "4194bea6-1525-4970-996e-b2f1e3a15f01",
+      "name": "Wolverine",
+      "datetime": "2020-10-02",
+      "state": "1",
+      "turnos": [
+        {
+          "idTurno": 1,
+          "hora": "15:00:00",
+          "status": "1"
+        }
+      ]
+    },
+    {
+      "id": "5ee6dc0a-4110-4bb5-9d36-908fedc023fa",
+      "name": "Pelicula 1",
+      "datetime": "2020-10-03",
+      "state": "0"
+    },
+    {
+      "id": "a08b9f82-657a-4ed6-8c92-ea4ac4c7565b",
+      "name": "Hola soledad",
+      "datetime": "2020-10-03",
+      "state": "1"
+    },
+    {
+      "id": "adf94fd2-f0cc-4f70-a80f-c3f9523f2350",
+      "name": "Pelicula de Miedo 3",
+      "datetime": "2020-10-07",
+      "state": "0"
+    }
+  ]
+}
