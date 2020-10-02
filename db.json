@@ -4,14 +4,7 @@
       "id": "4194bea6-1525-4970-996e-b2f1e3a15f01",
       "name": "Wolverine",
       "datetime": "2020-10-02",
-      "state": "1",
-      "turnos": [
-        {
-          "idTurno": 1,
-          "hora": "15:00:00",
-          "status": "1"
-        }
-      ]
+      "state": "1"
     },
     {
       "id": "5ee6dc0a-4110-4bb5-9d36-908fedc023fa",
@@ -23,13 +16,51 @@
       "id": "a08b9f82-657a-4ed6-8c92-ea4ac4c7565b",
       "name": "Hola soledad",
       "datetime": "2020-10-03",
-      "state": "1"
+      "state": "0"
     },
     {
       "id": "adf94fd2-f0cc-4f70-a80f-c3f9523f2350",
       "name": "Pelicula de Miedo 3",
       "datetime": "2020-10-07",
       "state": "0"
+    },
+    {
+      "id": "f011cc2c-3f4b-41e4-bc3a-294158e6acdf",
+      "name": "Prueba Peli",
+      "datetime": "2020-10-10",
+      "state": "1"
+    },
+    {
+      "id": "bf0dcaf7-491c-4da4-b243-f80bb1cd728f",
+      "name": "Prueba 3",
+      "datetime": "2020-10-13",
+      "state": "1"
+    }
+  ],
+  "turnos": [
+    {
+      "id": "4194bea6-1525-4970-996e-b2f1e3a15f01",
+      "idTurno": 1,
+      "hora": "17:00:00",
+      "status": "0"
+    },
+    {
+      "id": "4194bea6-1525-4970-996e-b2f1e3a15f01",
+      "idTurno": 2,
+      "hora": "16:00:00",
+      "status": "0"
+    },
+    {
+      "id": "4194bea6-1525-4970-996e-b2f1e3a15f01",
+      "idTurno": 3,
+      "hora": "15:00:00",
+      "status": "0"
+    },
+    {
+      "id": "5ee6dc0a-4110-4bb5-9d36-908fedc023fa",
+      "idTurno": 4,
+      "hora": "11:00:00",
+      "status": "0"
     }
   ]
 }

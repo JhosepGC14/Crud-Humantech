@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import userApi from "../api/userApi";
-import { v4 as uuidv4 } from "uuid";
-import Helper from "../utils/Helper";
+import userApi from "../../api/userApi";
+import Helper from "../../utils/Helper";
 
 //material ui components
 import Grid from "@material-ui/core/Grid";
@@ -36,20 +35,22 @@ const useStyles = makeStyles((theme) => ({
 
 //principal component
 
-const AddMovieModal = ({ isModalOpen, handleCloseModal, getData }) => {
+const EditMovieModal = ({ isModalOpen, handleCloseModal, getData, data }) => {
   const classes = useStyles();
-
+  console.log("data en EditMovieModal: ", data.datetime);
   //state inicial
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date(`${data.datetime}T21:11:54`));
+  console.log("date : ", date);
+
   const [movies, setMovies] = useState({
-    id: null,
-    name: "",
+    id: data.id,
+    name: data.name,
     datetime: "",
-    state: "",
+    state: data.state,
   });
 
   //handleChange
-  const { id, name, datetime, state } = movies;
+  const { name, state } = movies;
   const handleMovieChange = (e) => {
     setMovies({
       ...movies,
@@ -61,16 +62,14 @@ const AddMovieModal = ({ isModalOpen, handleCloseModal, getData }) => {
     setDate(e);
   };
 
-  //POST
-  //agregar usuarios
-  const addMovie = async () => {
+  //metodo PUT
+  const updateUser = async (movies) => {
     try {
-      console.log("movie en App.js :", movies);
-      console.log("datetime sin format en App.js :", date);
-      movies.id = uuidv4();
+      console.log("Movies en UpdateUser: ", movies);
+      console.log("Date en UpdateUser: ", date);
       movies.datetime = Helper.getDateFormat(date);
-      console.log("lo que se envia al post:", movies);
-      await userApi.users.postUsers(movies);
+      console.log("lo que se envia al PUT:", movies);
+      await userApi.users.putUsers(movies);
       getData();
       handleCloseModal();
     } catch (error) {
@@ -108,7 +107,7 @@ const AddMovieModal = ({ isModalOpen, handleCloseModal, getData }) => {
               <KeyboardDatePicker
                 disableToolbar
                 variant="inline"
-                format="MM/dd/yyyy"
+                format="dd/MM/yyyy"
                 id="date-picker-inline"
                 label="Fecha de Publicación"
                 value={date}
@@ -148,7 +147,7 @@ const AddMovieModal = ({ isModalOpen, handleCloseModal, getData }) => {
             <Button
               variant="contained"
               color="primary"
-              onClick={() => addMovie()}
+              onClick={() => updateUser(movies)}
             >
               Guardar
             </Button>
@@ -159,4 +158,4 @@ const AddMovieModal = ({ isModalOpen, handleCloseModal, getData }) => {
   );
 };
 
-export default AddMovieModal;
+export default EditMovieModal;

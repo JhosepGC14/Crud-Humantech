@@ -1,57 +1,7 @@
-// import React from "react";
-// import { useForm } from "react-hook-form";
-
-// const EditUserForm = (props) => {
-//   const { register, errors, handleSubmit, setValue } = useForm({
-//     defaultValues: props.userSelecionado,
-//   });
-
-//   setValue("name", props.userSelecionado.name);
-//   setValue("username", props.userSelecionado.username);
-
-//   const onSubmit = (data, e) => {
-//     console.log(data);
-//     // se le asigna el id del usuario seleccionado a la nueva data
-//     data.id = props.userSelecionado.id;
-//     //fn para actualizar
-//     props.updateUser(props.userSelecionado.id, data);
-//     //reseta el form
-//     e.target.reset();
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit(onSubmit)}>
-//       <label htmlFor="name">Username: </label>
-//       <input
-//         id="name"
-//         name="name"
-//         type="text"
-//         ref={register({
-//           required: { value: true, message: "Campo requerido" },
-//         })}
-//       />
-//       <div className="error">{errors?.name?.message}</div>
-//       <label htmlFor="username">Username: </label>
-//       <input
-//         id="username"
-//         name="username"
-//         type="text"
-//         ref={register({
-//           required: { value: true, message: "Campo requerido" },
-//         })}
-//       />
-//       <div>{errors?.name?.message}</div>
-//       <button>Editar Usuario</button>
-//     </form>
-//   );
-// };
-
-// export default EditUserForm;
-
 import React, { useState } from "react";
-import userApi from "../api/userApi";
+import userApi from "../../api/userApi";
 import { v4 as uuidv4 } from "uuid";
-import Helper from "../utils/Helper";
+import Helper from "../../utils/Helper";
 
 //material ui components
 import Grid from "@material-ui/core/Grid";
@@ -86,22 +36,20 @@ const useStyles = makeStyles((theme) => ({
 
 //principal component
 
-const EditMovieModal = ({ isModalOpen, handleCloseModal, getData, data }) => {
+const AddMovieModal = ({ isModalOpen, handleCloseModal, getData }) => {
   const classes = useStyles();
-  console.log("data en EditMovieModal: ", data.datetime);
-  //state inicial
-  const [date, setDate] = useState(new Date(`${data.datetime}T21:11:54`));
-  console.log("date : ", date);
 
+  //state inicial
+  const [date, setDate] = useState(new Date());
   const [movies, setMovies] = useState({
-    id: data.id,
-    name: data.name,
+    id: null,
+    name: "",
     datetime: "",
-    state: data.state,
+    state: "",
   });
 
   //handleChange
-  const { id, name, datetime, state } = movies;
+  const { name, state } = movies;
   const handleMovieChange = (e) => {
     setMovies({
       ...movies,
@@ -113,28 +61,16 @@ const EditMovieModal = ({ isModalOpen, handleCloseModal, getData, data }) => {
     setDate(e);
   };
 
-  // //POST
-  // //agregar usuarios
-  // const addMovie = async () => {
-  //   try {
-  //     console.log("movie en App.js :", movies);
-  //     movies.id = uuidv4();
-  //     movies.datetime = Helper.getDateFormat(date);
-  //     console.log("lo que se envia al post:", movies);
-  //     await userApi.users.postUsers(movies);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  //metodo PUT
-  const updateUser = async (movies) => {
+  //POST
+  //agregar usuarios
+  const addMovie = async () => {
     try {
-      console.log("Movies en UpdateUser: ", movies);
-      console.log("Date en UpdateUser: ", date);
+      console.log("movie en App.js :", movies);
+      console.log("datetime sin format en App.js :", date);
+      movies.id = uuidv4();
       movies.datetime = Helper.getDateFormat(date);
-      console.log("lo que se envia al PUT:", movies);
-      await userApi.users.putUsers(movies);
+      console.log("lo que se envia al post:", movies);
+      await userApi.users.postMovies(movies);
       getData();
       handleCloseModal();
     } catch (error) {
@@ -172,7 +108,7 @@ const EditMovieModal = ({ isModalOpen, handleCloseModal, getData, data }) => {
               <KeyboardDatePicker
                 disableToolbar
                 variant="inline"
-                format="dd/MM/yyyy"
+                format="MM/dd/yyyy"
                 id="date-picker-inline"
                 label="Fecha de Publicación"
                 value={date}
@@ -212,7 +148,7 @@ const EditMovieModal = ({ isModalOpen, handleCloseModal, getData, data }) => {
             <Button
               variant="contained"
               color="primary"
-              onClick={() => updateUser(movies)}
+              onClick={() => addMovie()}
             >
               Guardar
             </Button>
@@ -223,4 +159,4 @@ const EditMovieModal = ({ isModalOpen, handleCloseModal, getData, data }) => {
   );
 };
 
-export default EditMovieModal;
+export default AddMovieModal;

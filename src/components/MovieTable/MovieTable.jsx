@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import EditUserForm from "../components/EditUserForm";
-import userApi from "../api/userApi";
+import EditUserForm from "../MovieTable/EditUserForm";
+import userApi from "../../api/userApi";
+import { useHistory } from "react-router-dom";
 
 //material UI components
 import { withStyles, makeStyles } from "@material-ui/core/styles";
@@ -81,6 +82,12 @@ const MovieTable = (props) => {
     }
   };
 
+  //redirect to Shift
+  let history = useHistory();
+  const handleShiftMovie = (id) => {
+    history.push(`/turnos/${id}`);
+  };
+
   return (
     <>
       {modaEditIsOpen && (
@@ -126,7 +133,11 @@ const MovieTable = (props) => {
                     >
                       <EditIcon fontSize="small" />
                     </IconButton>
-                    <IconButton aria-label="delete" className={classes.margin}>
+                    <IconButton
+                      aria-label="delete"
+                      className={classes.margin}
+                      onClick={() => handleShiftMovie(item.id)}
+                    >
                       <MenuIcon fontSize="small" />
                     </IconButton>
                     <IconButton

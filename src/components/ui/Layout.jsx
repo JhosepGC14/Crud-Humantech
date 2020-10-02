@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -99,6 +100,8 @@ const Layout = (props) => {
     setOpen(false);
   };
 
+  let router = useHistory();
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -151,11 +154,14 @@ const Layout = (props) => {
         <List>
           <ListItem button>
             <ListItemIcon>
-              <DashboardIcon fontSize="large" />
+              <DashboardIcon
+                fontSize="large"
+                onClick={() => router.push("/")}
+              />
             </ListItemIcon>
             <ListItemText>Dashboard</ListItemText>
           </ListItem>
-          <ListItem button>
+          <ListItem button onClick={() => router.push("/")}>
             <ListItemIcon>
               <LocalMoviesIcon fontSize="large" />
             </ListItemIcon>

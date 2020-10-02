@@ -42,20 +42,34 @@ async function callApi(endpoint, options = {}, token) {
 
 const userApi = {
   users: {
-    //get
-    async getUsers(token, filters) {
+    //get movies
+    async getMovies(token, filters) {
       let response = await callApi("/movies");
       return response;
     },
+    //get turnos
+    async getShiftByMovie() {
+      let response = await callApi(`/turnos`);
+      return response;
+    },
     //post
-    async postUsers(user) {
+    async postMovies(user) {
       let response = await callApi("/movies", {
         method: "POST",
         body: JSON.stringify(user),
       });
       return response;
     },
-    //put
+    //post turnos
+    async postShift(user) {
+      let response = await callApi("/turnos", {
+        method: "PUT",
+        body: JSON.stringify(user),
+      });
+      return response;
+    },
+
+    //put Movie
     async putUsers(user) {
       let response = await callApi(`/movies/${user.id}`, {
         method: "PUT",
@@ -63,6 +77,16 @@ const userApi = {
       });
       return response;
     },
+
+    //put Shift
+    async putShiftMovie(user) {
+      let response = await callApi(`/movies/${user.id}`, {
+        method: "PUT",
+        body: JSON.stringify(user),
+      });
+      return response;
+    },
+
     //patch
     async patchMovies(id, body) {
       let response = await callApi(`/movies/${id}`, {
@@ -71,6 +95,7 @@ const userApi = {
       });
       return response;
     },
+
     //delete
     async deleteUsers(id) {
       let response = await callApi(`/movies/${id}`, {
